@@ -10,9 +10,16 @@ import dagger.Provides;
 @NetScope
 public class NetModule {
 
-    @LoggerStarageName
+    //@LoggerStorageName
+    @NetScope
     @Provides
-    IStorage storage() {
-        return new LoggerStorage();
+    IStorage storage(LoggerStorage loggerStorage) {
+        return loggerStorage;
+    }
+
+    @DebugLoggerStorageName
+    @Provides
+    IStorage debugStorage(DebugLoggerStorage loggerStorage) {
+        return loggerStorage;
     }
 }
